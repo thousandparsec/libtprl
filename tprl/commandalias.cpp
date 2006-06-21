@@ -21,6 +21,8 @@
 
 #include "commandalias.h"
 
+namespace tprl{
+
 CommandAlias::CommandAlias(const std::string& alias): RLCommand(), aliased(NULL){
     name = alias;
 }
@@ -48,3 +50,4 @@ void CommandAlias::setTarget(RLCommand* target){
     }
 }
 
+}

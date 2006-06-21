@@ -22,6 +22,8 @@
 
 #include "commandcategory.h"
 
+namespace tprl{
+
 CommandCategory::CommandCategory(const std::string& catname, const std::string& cathelp): RLCommand(), commands(){
     name = catname;
     help = cathelp;
@@ -50,4 +52,6 @@ void CommandCategory::action(const std::string& cmdstring){
 
 void CommandCategory::add(RLCommand *cmd){
     commands.insert(cmd);
+}
+
 }

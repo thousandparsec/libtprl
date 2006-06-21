@@ -24,6 +24,8 @@
 #include <string>
 #include <set>
 
+namespace tprl{
+
 /**
 	@author Lee Begg <llnz@paradise.net.nz>
 */
@@ -41,5 +43,7 @@ private:
     std::set<RLCommand*> commands;
 
 };
+
+}
 
 #endif

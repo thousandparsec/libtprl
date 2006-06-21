@@ -18,6 +18,7 @@
  */
 #include "rlcommand.h"
 
+namespace tprl{
 
 RLCommand::RLCommand() : name(), help()
 {
@@ -35,4 +36,6 @@ std::string RLCommand::getName(){
 
 std::string RLCommand::getHelp(){
     return help;
+}
+
 }

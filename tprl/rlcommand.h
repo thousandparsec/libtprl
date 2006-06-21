@@ -21,6 +21,7 @@
 
 #include <string>
 
+namespace tprl{
 
 /**
 	@author Lee Begg <llnz@paradise.net.nz>
@@ -40,5 +41,7 @@ protected:
     std::string help;
 
 };
+
+}
 
 #endif

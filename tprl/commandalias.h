@@ -21,6 +21,8 @@
 
 #include <rlcommand.h>
 
+namespace tprl{
+
 /**
 	@author Lee Begg <llnz@paradise.net.nz>
 */
@@ -38,5 +40,7 @@ private:
     RLCommand* aliased;
 
 };
+
+}
 
 #endif
