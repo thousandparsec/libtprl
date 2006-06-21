@@ -1,0 +1,15 @@
+This is a Readline library in C++.
+Origanally written for Thousand Parsec.
+More info at
+http://www.thousandparsec.net/tp/
+
+Requires:
+readline.
+
+
+WARNING!!!!
+libtprl is *not* even remotely thread safe.  This is bad and I know it.
+So be *very* careful about using it in multi-thread environments.
+
+Again:
+WARNING: libtprl is NOT thread safe.

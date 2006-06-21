@@ -1,0 +1,8 @@
+/*! \namespace tprl
+     \brief The overall namespace for libtprl.
+
+     The namespace tprl is used by libtprl to keep
+     the declarations of classes and functions separate from
+     any a program may declare or use.
+
+*/
