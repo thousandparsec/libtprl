@@ -1,4 +1,4 @@
-SUBDIRS = tprl
+SUBDIRS = tprl test
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libtprl.pc 

@@ -50,11 +50,13 @@ AC_CHECK_LIB(readline,readline,
     ],[ $READLINE_LIBS ]
 )
 
+AC_SUBST(READLINE_LIBS)
 
 AC_CONFIG_FILES([
 libtprl.pc
 Makefile
 tprl/Makefile
+test/Makefile
 ]) 
 
 AC_OUTPUT

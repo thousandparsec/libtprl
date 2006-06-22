@@ -9,4 +9,4 @@ Requires:
 Version: @VERSION@
 Libs: -L${libdir} -ltprl
 Cflags: -I${includedir}/tprl
-Requires.private: $(READLINE)
+Requires.private: $(READLINE_LIBS)
