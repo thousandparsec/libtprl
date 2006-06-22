@@ -19,7 +19,7 @@
 #ifndef COMMANDCATEGORY_H
 #define COMMANDCATEGORY_H
 
-#include <rlcommand.h>
+#include <tprl/rlcommand.h>
 
 #include <string>
 #include <set>

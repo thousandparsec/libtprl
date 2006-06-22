@@ -19,7 +19,7 @@
 #ifndef COMMANDALIAS_H
 #define COMMANDALIAS_H
 
-#include <rlcommand.h>
+#include <tprl/rlcommand.h>
 
 namespace tprl{
 
