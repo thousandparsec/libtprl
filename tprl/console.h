@@ -13,6 +13,8 @@
 #define TPRL_CONSOLE_H
 
 #include <string>
+#include <set>
+#include <tprl/rlcommand.h>
 
 namespace tprl
 {
@@ -31,6 +33,7 @@ namespace tprl
     
     void setUseHistory(bool on);
     void setPrompt(const std::string np);
+    void setCommandSet(std::set<RLCommand*> *set);
     
     void readLine();
     
@@ -52,6 +55,7 @@ namespace tprl
     bool usehistory;
     bool lastlinewasnull;
     std::string prompt;
+    std::set<RLCommand*> *commands;
 
   };
 

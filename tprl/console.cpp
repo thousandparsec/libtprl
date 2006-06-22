@@ -59,6 +59,10 @@ static char* command_generator(const char* text, int state){
     prompt = np;
   }
 
+  void Console::setCommandSet(std::set<RLCommand*>* set){
+    commands = set;
+  }
+  
   void Console::readLine(){
     char* cmd = readline(prompt.c_str());
     finishedReadingLine(cmd);
@@ -88,7 +92,26 @@ static char* command_generator(const char* text, int state){
         add_history(line);
       }
       
-      //TODO
+      if(commands != NULL){
+        std::string cmdstring = line;
+        std::string cmdlower = cmdstring;
+        std::transform(cmdlower.begin(), cmdlower.end(), std::inserter(cmdlower, cmdlower.begin()), tolower);
+        bool handled = false;
+        for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+          if(cmdlower.find((*itcurr)->getName()) == 0){
+            handled = true;
+            if((*itcurr)->getName().length() + 1 < cmdstring.length()){
+              (*itcurr)->action(cmdstring.substr((*itcurr)->getName().length() + 1, cmdstring.npos));
+            }else{
+              (*itcurr)->action("");
+            }
+          }
+        }
+        if(!handled){
+          //TODO
+        }
+      
+      }
       
       free(line);
       lastlinewasnull = false;
@@ -98,7 +121,11 @@ static char* command_generator(const char* text, int state){
   }
   
   char** Console::wordCompletion(const char* text, int start, int end){
-    //TODO
+    char** rtv = NULL;
+    if(commands != NULL){
+      //TODO
+    }
+    return rtv;
   }
   
   char* Console::commandCompleter(const char* text, int state){
