@@ -41,7 +41,11 @@ void CommandCategory::action(const std::string& cmdstring){
     for(std::set<RLCommand*>::iterator itcurr = commands.begin(); itcurr != commands.end(); ++itcurr){
         if(cmdlower.find((*itcurr)->getName()) == 0){
             handled = true;
-            (*itcurr)->action(cmdstring.substr((*itcurr)->getName().length() + 1, cmdstring.npos));
+            if((*itcurr)->getName().length() + 1 < cmdstring.length()){
+              (*itcurr)->action(cmdstring.substr((*itcurr)->getName().length() + 1, cmdstring.npos));
+            }else{
+              (*itcurr)->action("");
+            }
         }
     }
     if(!handled){
