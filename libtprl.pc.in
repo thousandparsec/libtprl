@@ -7,6 +7,5 @@ Name: libtprl
 Description: Thousand Parsec Readline library
 Requires: 
 Version: @VERSION@
-Libs: -L${libdir} -ltprl
+Libs: -L${libdir} -ltprl @READLINE_LIBS@
 Cflags: -I${includedir}/tprl
-Requires.private: $(READLINE_LIBS)
