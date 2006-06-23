@@ -16,8 +16,8 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  */
-#ifndef COMMANDALIAS_H
-#define COMMANDALIAS_H
+#ifndef TPRL_COMMANDALIAS_H
+#define TPRL_COMMANDALIAS_H
 
 #include <tprl/rlcommand.h>
 
