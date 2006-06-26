@@ -12,6 +12,9 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+#include <iostream>
+#include <iomanip>
+
 #include "console.h"
 
 namespace tprl
@@ -97,13 +100,58 @@ static char* command_generator(const char* text, int state){
         std::string cmdlower = cmdstring;
         std::transform(cmdlower.begin(), cmdlower.end(), std::inserter(cmdlower, cmdlower.begin()), tolower);
         bool handled = false;
-        for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
-          if(cmdlower.find((*itcurr)->getName()) == 0){
-            handled = true;
-            if((*itcurr)->getName().length() + 1 < cmdstring.length()){
-              (*itcurr)->action(cmdstring.substr((*itcurr)->getName().length() + 1, cmdstring.npos));
-            }else{
-              (*itcurr)->action("");
+        if(cmdlower.find("help") == 0){
+          if(cmdstring.length() <= 5){
+            uint32_t maxColWidth = 0;
+            for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+              if((*itcurr)->getName().length() > maxColWidth){
+                maxColWidth = (*itcurr)->getName().length();
+              }
+            }
+            for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+              std::cout << std::setw(maxColWidth) << (*itcurr)->getName() << std::setw(0) << "\t" << (*itcurr)->getHelp() << std::endl;
+            }
+            std::cout << std::setw(maxColWidth) << "help" << std::setw(0) << "\t" << "Prints out the help for this program" << std::endl;
+          }else{
+            cmdstring = cmdstring.substr(5, cmdstring.npos);
+            std::string cmdlower = cmdstring;
+            std::transform(cmdlower.begin(), cmdlower.end(), std::inserter(cmdlower, cmdlower.begin()), tolower);
+            for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+              if(cmdlower.find((*itcurr)->getName()) == 0){
+                handled = true;
+                if((*itcurr)->getName().length() + 1 < cmdstring.length()){
+                  //sub items?
+                  std::cout << (*itcurr)->getHelp() << std::endl;
+                }else{
+                  std::cout << (*itcurr)->getHelp() << std::endl;
+                }
+              }
+            }
+            if(!handled){
+              if(cmdlower.find("help") == 0){
+                std::cout << "Prints out the help for this program" << std::endl;
+              }else{
+                uint32_t maxColWidth = 0;
+                for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+                  if((*itcurr)->getName().length() > maxColWidth){
+                    maxColWidth = (*itcurr)->getName().length();
+                  }
+                }
+                for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+                  std::cout << std::setw(maxColWidth) << (*itcurr)->getName() << std::setw(0) << "\t" << (*itcurr)->getHelp() << std::endl;
+                }
+              }
+            }
+          }
+        }else{
+          for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+            if(cmdlower.find((*itcurr)->getName()) == 0){
+              handled = true;
+              if((*itcurr)->getName().length() + 1 < cmdstring.length()){
+                (*itcurr)->action(cmdstring.substr((*itcurr)->getName().length() + 1, cmdstring.npos));
+              }else{
+                (*itcurr)->action("");
+              }
             }
           }
         }
