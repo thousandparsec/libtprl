@@ -1,3 +1,13 @@
+2006-07-08 Lee
+  * Released 0.0.1
+  * Support for a number of features
+  * No completion
+  * Very basic help support
+  * Supports history when turned on
+  * Supports blocking (normal readline()) and non-blocking
+  * Supports aliases and categories
+  * Used by tpserver-cpp
+
 2006-06-21 Lee
 	* Started libtprl
 	
