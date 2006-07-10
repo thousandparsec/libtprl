@@ -1,3 +1,8 @@
+2006-07-11 Lee
+  * Released 0.1.0
+  * Completion at level 1 (commands/categories) and level 2 (sub commands)
+  * Help for level 1 only
+
 2006-07-08 Lee
   * Released 0.0.1
   * Support for a number of features
