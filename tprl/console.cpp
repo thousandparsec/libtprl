@@ -171,7 +171,45 @@ static char* command_generator(const char* text, int state){
   char** Console::wordCompletion(const char* text, int start, int end){
     char** rtv = NULL;
     if(commands != NULL){
-      //TODO
+      if(start == 0){
+        std::set<std::string> names;
+        
+        for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+          if((*itcurr)->getName().find(text, 0, end) == 0){
+            names.insert((*itcurr)->getName());
+          }
+        }
+        if(std::string("help").find(text, 0, end) == 0){
+          names.insert("help");
+        }
+        if(!names.empty()){
+          //find longest common substring of the matches
+          std::string completion = (*(names.begin()));
+          for(std::set<std::string>::iterator itcurr = ++(names.begin()); itcurr != names.end(); ++itcurr){
+            size_t pos = end;
+            while(pos < completion.length() && pos < itcurr->length()){
+              if(completion[pos] != (*itcurr)[pos]){
+                break;
+              }
+              ++pos;
+            }
+            completion = completion.substr(0, pos);
+          }
+          rtv = (char**)(malloc(sizeof(char*) * (names.size() + 2)));
+          rtv[0] =(char*)(malloc(completion.length() + 1));
+          strncpy(rtv[0], completion.c_str(), completion.length());
+          rtv[0][completion.length()] = '\0';
+          std::set<std::string>::iterator itname = names.begin();
+          for(size_t i = 1; i < names.size() + 1; i++, ++itname){
+            rtv[i] = (char*)(malloc(itname->length() + 1));
+            strncpy(rtv[i], itname->c_str(), itname->length());
+            rtv[i][itname->length()] = '\0';
+          }
+          rtv[names.size() +1] = NULL;
+        }
+      }else{
+        //TODO
+      }
     }
     return rtv;
   }
