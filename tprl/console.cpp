@@ -15,6 +15,8 @@
 #include <iostream>
 #include <iomanip>
 
+#include "commandcategory.h"
+
 #include "console.h"
 
 namespace tprl
@@ -208,7 +210,51 @@ static char* command_generator(const char* text, int state){
           rtv[names.size() +1] = NULL;
         }
       }else{
-        //TODO
+        std::string cmdstring = rl_line_buffer;
+        std::string cmdlower = cmdstring;
+        std::transform(cmdlower.begin(), cmdlower.end(), std::inserter(cmdlower, cmdlower.begin()), tolower);
+        for(std::set<RLCommand*>::iterator itcurr = commands->begin(); itcurr != commands->end(); ++itcurr){
+          if(cmdlower.find((*itcurr)->getName()) == 0){
+            CommandCategory* cat = dynamic_cast<CommandCategory*>((*itcurr));
+            if(cat != NULL){
+              std::set<std::string> names;
+              std::set<RLCommand*> lcommands = cat->getCommands();
+              for(std::set<RLCommand*>::iterator itcurr = lcommands.begin(); itcurr != lcommands.end(); ++itcurr){
+                if((*itcurr)->getName().find(text, 0, end - start) == 0){
+                  names.insert((*itcurr)->getName());
+                }
+              }
+              if(!names.empty()){
+                //find longest common substring of the matches
+                std::string completion = (*(names.begin()));
+                for(std::set<std::string>::iterator itcurr = ++(names.begin()); itcurr != names.end(); ++itcurr){
+                  size_t pos = end - start;
+                  while(pos < completion.length() && pos < itcurr->length()){
+                    if(completion[pos] != (*itcurr)[pos]){
+                      break;
+                    }
+                    ++pos;
+                  }
+                  completion = completion.substr(0, pos);
+                }
+                rtv = (char**)(malloc(sizeof(char*) * (names.size() + 2)));
+                rtv[0] =(char*)(malloc(completion.length() + 1));
+                strncpy(rtv[0], completion.c_str(), completion.length());
+                rtv[0][completion.length()] = '\0';
+                std::set<std::string>::iterator itname = names.begin();
+                for(size_t i = 1; i < names.size() + 1; i++, ++itname){
+                  rtv[i] = (char*)(malloc(itname->length() + 1));
+                  strncpy(rtv[i], itname->c_str(), itname->length());
+                  rtv[i][itname->length()] = '\0';
+                }
+                rtv[names.size() +1] = NULL;
+              }
+            }else{
+              //TODO command's parameter completion?
+            }
+            break;
+          }
+        }
       }
     }
     return rtv;

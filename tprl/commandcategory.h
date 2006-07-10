@@ -38,6 +38,7 @@ public:
     virtual void action(const std::string& cmdstring);
     
     void add(RLCommand* cmd);
+    std::set<RLCommand*> getCommands() const;
     
 private:
     std::set<RLCommand*> commands;

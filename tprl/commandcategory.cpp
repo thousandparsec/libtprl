@@ -58,4 +58,8 @@ void CommandCategory::add(RLCommand *cmd){
     commands.insert(cmd);
 }
 
+std::set<RLCommand*> CommandCategory::getCommands() const{
+  return commands;
+}
+
 }

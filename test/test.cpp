@@ -42,6 +42,12 @@ int main(int argc, char** argv){
   alias->setTarget(quit);
   commands.insert(alias);
   
+  CommandCategory* cat = new CommandCategory("quick", "A quick category");
+  alias = new CommandAlias("quit");
+  alias->setTarget(quit);
+  cat->add(alias);
+  commands.insert(cat);
+  
   console->setCommandSet( &commands);
   
   while(!timetoend){
