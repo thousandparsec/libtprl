@@ -8,4 +8,4 @@ Description: Thousand Parsec Readline library
 Requires: 
 Version: @VERSION@
 Libs: -L${libdir} -ltprl @READLINE_LIBS@
-Cflags: -I${includedir}/tprl
+Cflags: -I${includedir}
