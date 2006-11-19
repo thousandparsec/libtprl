@@ -9,11 +9,12 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include <readline/readline.h>
-#include <readline/history.h>
 
 #include <iostream>
 #include <iomanip>
+
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #include "commandcategory.h"
 
