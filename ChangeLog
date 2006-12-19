@@ -1,3 +1,8 @@
+2007-12-19 Lee
+ * Released 0.1.1
+ * Include order changed to fix readline bug
+ * pkg-config file changed to work with different install directories
+
 2006-07-11 Lee
   * Released 0.1.0
   * Completion at level 1 (commands/categories) and level 2 (sub commands)
