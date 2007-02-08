@@ -33,7 +33,13 @@ namespace tprl
     
     void setUseHistory(bool on);
     void setPrompt(const std::string np);
+    void setCatchSignals(bool on);
+    void setCompletionFinished(bool on);
+    
     void setCommandSet(std::set<RLCommand*> *set);
+    std::set<RLCommand*> * getCommandSet() const;
+    
+    void redrawLine();
     
     void readLine();
     
@@ -44,10 +50,13 @@ namespace tprl
     bool lastLineWasNull() const;
     
     //internal public stuff
+    friend void linecomplete(char* line);
+    friend char** word_completion(const char* text, int start, int end);
+
+  protected:
     void finishedReadingLine(char* line);
     char** wordCompletion(const char* text, int start, int end);
-    char* commandCompleter(const char* text, int state);
-
+    
   private:
     Console();
     static Console* instance;

@@ -25,16 +25,12 @@ namespace tprl
 
   Console* Console::instance = NULL;
   
-static void linecomplete(char* line){
+void linecomplete(char* line){
   Console::getConsole()->finishedReadingLine(line);
 }
 
-static char** word_completion(const char* text, int start, int end){
+char** word_completion(const char* text, int start, int end){
   return Console::getConsole()->wordCompletion(text, start, end);
-}
-
-static char* command_generator(const char* text, int state){
-  return Console::getConsole()->commandCompleter(text, state);
 }
 
   Console::Console() : prompt(""){
@@ -65,8 +61,24 @@ static char* command_generator(const char* text, int state){
     prompt = np;
   }
 
+  void Console::setCatchSignals(bool on){
+    rl_catch_signals = on ? 1 : 0;
+  }
+  
+  void Console::setCompletionFinished(bool on){
+    rl_attempted_completion_over = on ? 1 : 0;
+  }
+  
   void Console::setCommandSet(std::set<RLCommand*>* set){
     commands = set;
+  }
+  
+  std::set<RLCommand*> * Console::getCommandSet() const{
+    return commands;
+  }
+  
+  void Console::redrawLine(){
+    rl_redisplay();
   }
   
   void Console::readLine(){
@@ -259,10 +271,6 @@ static char* command_generator(const char* text, int state){
       }
     }
     return rtv;
-  }
-  
-  char* Console::commandCompleter(const char* text, int state){
-    //TODO
   }
   
 }
