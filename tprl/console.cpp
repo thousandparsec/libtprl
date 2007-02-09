@@ -81,6 +81,10 @@ char** word_completion(const char* text, int start, int end){
     rl_redisplay();
   }
   
+  void Console::redrawLineForced(){
+    rl_forced_update_display();
+  }
+  
   void Console::readLine(){
     char* cmd = readline(prompt.c_str());
     finishedReadingLine(cmd);

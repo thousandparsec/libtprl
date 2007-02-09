@@ -40,6 +40,7 @@ namespace tprl
     std::set<RLCommand*> * getCommandSet() const;
     
     void redrawLine();
+    void redrawLineForced();
     
     void readLine();
     
