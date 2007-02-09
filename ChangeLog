@@ -1,4 +1,14 @@
-2007-12-19 Lee
+2007-02-10 Lee
+ * Released 0.1.2
+ * Added getter for Command sets
+ * Function for setting the end of completions (disable filename completion)
+ * Added functions to update line, and force update line
+ * Added function to set whether readline should catch signals
+ * Small tidy up
+ * Bumped library version, not binary compatible
+
+
+2006-12-19 Lee
  * Released 0.1.1
  * Include order changed to fix readline bug
  * pkg-config file changed to work with different install directories

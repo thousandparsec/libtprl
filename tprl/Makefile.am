@@ -2,7 +2,7 @@
 
 lib_LTLIBRARIES = libtprl.la
 
-libtprl_la_LDFLAGS = -version-info 1:0:0
+libtprl_la_LDFLAGS = -version-info 2:1:0
 libtprldir = $(includedir)/tprl
 
 libtprl_la_SOURCES = rlcommand.cpp commandcategory.cpp commandalias.cpp \
