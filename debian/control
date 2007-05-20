@@ -8,13 +8,13 @@ Section: libs
 Package: libtprl-dev
 Section: libdevel
 Architecture: any
-Depends: libtprlBROKEN (= ${Source-Version})
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Depends: libtprl1 (= ${Source-Version})
+Description: Thousand Parsec Readline Library development package
+ Thousand Parsec Readline Library development package
 
-Package: libtprlBROKEN
+Package: libtprl1
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: Thousand Parsec Readline Library
+ Thousand Parsec Readline Library
