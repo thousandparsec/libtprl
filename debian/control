@@ -1,0 +1,20 @@
+Source: libtprl
+Priority: extra
+Maintainer: Paul Schulz <paul@mawsonlakes.org>
+Build-Depends: debhelper (>= 5), autotools-dev
+Standards-Version: 3.7.2
+Section: libs
+
+Package: libtprl-dev
+Section: libdevel
+Architecture: any
+Depends: libtprlBROKEN (= ${Source-Version})
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
+
+Package: libtprlBROKEN
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
