@@ -4,7 +4,7 @@ More info at
 http://www.thousandparsec.net/tp/
 
 Requires:
-readline.
+readline5 or higher.
 
 
 WARNING!!!!
