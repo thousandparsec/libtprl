@@ -1,14 +1,14 @@
 Source: libtprl
 Priority: extra
 Maintainer: Paul Schulz <paul@mawsonlakes.org>
-Build-Depends: debhelper (>= 5), autotools-dev, automake, libtool
+Build-Depends: debhelper (>= 5), autotools-dev, automake, libtool, libreadline5-dev
 Standards-Version: 3.7.2
 Section: libs
 
 Package: libtprl-dev
 Section: libdevel
 Architecture: any
-Depends: libtprl1 (= ${Source-Version})
+Depends: libtprl1 (= ${binary:Version})
 Description: Thousand Parsec Readline Library development package
  The Thousand Parsec Readline library is used by other software
  (particularly C++ code) written for the Thousand Parsec project
@@ -19,7 +19,7 @@ Description: Thousand Parsec Readline Library development package
 Package: libtprl1
 Section: libs
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, libncurses
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Thousand Parsec Readline Library
  The Thousand Parsec Readline library is used by other software
  (particularly C++ code) written for the Thousand Parsec project

@@ -33,11 +33,13 @@ major=2
 #major=`ls src/.libs/lib*.so.* | \
 # awk '{if (match($$0,/\.so\.[0-9]+$$/)) print substr($$0,RSTART+4)}'`
 
+configure:
+	./autogen.sh
+
 config.status: configure
 	dh_testdir
 	# Add here commands to configure the package.
 	# ./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --mandir=\$${prefix}/share/man --infodir=\$${prefix}/share/info CFLAGS="$(CFLAGS)" LDFLAGS="-Wl,-z,defs"
-	./autogen.sh
 	./configure --prefix=/usr
 
 build: build-stamp
@@ -56,6 +58,8 @@ clean:
 
 	# Add here commands to clean up after the build process.
 	-$(MAKE) distclean
+
+	rm -f aclocal.m4 build-stamp config.guess config.h config.h.in config.log config.status config.sub configure depcomp install-sh libtool libtprl.pc ltmain.sh Makefile Makefile.in test/Makefile.in tprl/Makefile.in missing stamp-h1
 ifneq "$(wildcard /usr/share/misc/config.sub)" ""
 	cp -f /usr/share/misc/config.sub config.sub
 endif
