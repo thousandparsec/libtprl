@@ -12,7 +12,12 @@ missing
 mkinstalldirs
 stamp-h*
 libtool
+depcomp
 *.lo
 *.la
 libtprl.pc
 test/test
+test/deps
+*/.deps
+*/.libs
+*.o
