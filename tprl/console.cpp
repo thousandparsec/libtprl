@@ -17,6 +17,7 @@
 #include <iomanip>
 #include <vector>
 #include <cctype>
+#include <stdint.h>
 
 #include <readline/readline.h>
 #include <readline/history.h>
