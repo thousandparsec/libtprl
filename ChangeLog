@@ -1,3 +1,9 @@
+2010-03-22 Lee
+ * Released 0.1.3
+ * Debian packaging support
+ * Little tidyups (gcc 4.3 support, headers, etc)
+ * Rewrite of command tokenising (thanks ezod)
+
 2007-02-10 Lee
  * Released 0.1.2
  * Added getter for Command sets

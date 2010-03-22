@@ -1,9 +1,9 @@
-AC_INIT([libtprl],[0.1.2],[lee@thousandparsec.net])
+AC_INIT([libtprl],[0.1.3],[lee@thousandparsec.net])
 AC_CONFIG_SRCDIR(tprl/rlcommand.cpp)
 
 AC_CANONICAL_TARGET([])
 
-AM_INIT_AUTOMAKE(libtprl, 0.1.2)
+AM_INIT_AUTOMAKE(libtprl, 0.1.3)
 AM_CONFIG_HEADER(config.h)
 
 AM_MAINTAINER_MODE
